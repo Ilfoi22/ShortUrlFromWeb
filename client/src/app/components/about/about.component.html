@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>URL Shortener Algorithm</h2>
+  <ul>
+    <h4>Generate Unique Code:</h4>
+    <li>
+      Utilizes a service (<code>UrlShorteningCreateCodeService</code>) to
+      generate a unique code for each URL.
+    </li>
+    <li>A random alphanumeric string of a specified length is generated.</li>
+    <li>
+      The uniqueness of the code is ensured by checking against the database.
+    </li>
+  </ul>
+  <ul>
+    <h4>Create Short URL:</h4>
+    <li>
+      The <code>CreateShortUrlAsync</code> method in the
+      <code>ShortenUrlController</code> handles the creation of the short URL.
+    </li>
+    <li>Validates the provided long URL.</li>
+    <li>
+      Generates a unique code using the
+      <code>UrlShorteningCreateCodeService</code>.
+    </li>
+    <li>
+      Constructs the short URL using the generated code and the current
+      request's scheme and host.
+    </li>
+    <li>
+      Stores the long URL, short code, and additional metadata (creation date,
+      user ID) in the database.
+    </li>
+  </ul>
+  <ul>
+    <h4>Retrieve Short URL:</h4>
+    <li>
+      The <code>GetShortUrlAsync</code> method in the
+      <code>ShortenUrlController</code> retrieves the original long URL based on
+      the short code.
+    </li>
+    <li>
+      If the code is found in the database, it redirects to the original long
+      URL.
+    </li>
+  </ul>
+  <ul>
+    <h4>Delete Short URL:</h4>
+    <li>
+      The <code>DeleteShortUrlAsync</code> method in the
+      <code>ShortenUrlController</code> handles the deletion of a shortened URL.
+    </li>
+    <li>
+      Checks if the user is an admin or the creator of the short URL before
+      allowing deletion.
+    </li>
+    <li>Removes the entry from the database.</li>
+  </ul>
+  <h5>
+    This algorithm ensures the creation of unique short URLs, supports retrieval
+    and redirection to the original URLs, and provides administrative
+    capabilities for URL management.
+  </h5>
+</div>
